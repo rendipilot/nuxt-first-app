@@ -1,11 +1,5 @@
 import { defineStore } from 'pinia'
 
-// Tipe untuk data dari API
-interface WebsiteInfo {
-  name: string
-  description: string
-}
-
 // Tipe untuk state store
 interface WebsiteState {
   name: string
@@ -21,7 +15,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
   actions: {
     async fetch() {
       try {
-        const infos = await $fetch<WebsiteInfo>('https://api.nuxt.com/modules/pinia')
+        const infos = await $fetch<WebsiteState>('https://api.nuxt.com/modules/pinia')
         this.name = infos.name
         this.description = infos.description
       } catch (error) {
